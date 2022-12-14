@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/player_controller.gd" type="Script" id=1]
+[ext_resource path="res://assets/models/lowpoly_arm.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/crosshair.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleMesh" id=1]
+mid_height = 3.0
+
+[sub_resource type="CapsuleShape" id=2]
+height = 3.0
+
+[sub_resource type="CylinderShape" id=3]
+
+[node name="MainChar" type="KinematicBody" groups=["Player"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028863, 5.51468, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Foot" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.50008, 0 )
+shape = SubResource( 3 )
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72446, 0 )
+
+[node name="Camera" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155521, 0 )
+
+[node name="lowpoly_arm" parent="Head/Camera" instance=ExtResource( 2 )]
+transform = Transform( -0.232133, 0.0689525, -0.0634164, -0.00710161, 0.156014, 0.195629, 0.0934112, 0.183212, -0.142721, 0.398501, -5.83662, -1.53317 )
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera"]
+margin_left = 300.0
+margin_top = 220.0
+margin_right = 340.0
+margin_bottom = 260.0
+texture = ExtResource( 3 )
+
+[node name="GroundCheck" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.5, 0 )

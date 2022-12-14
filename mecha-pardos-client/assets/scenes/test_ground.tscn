@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/models/player_character.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 6000, 0.2, 6000 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -3000, -0.1, -3000, -3000, 0.1, -3000, 3000, -0.1, -3000, -3000, -0.1, 3000, -3000, 0.1, 3000, 3000, 0.1, -3000, 3000, -0.1, 3000, 3000, 0.1, 3000 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RigidBody" type="RigidBody" parent="."]
+mode = 1
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51885, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51885, 0 )
+shape = SubResource( 2 )
+
+[node name="MainChar" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028863, 7.33092, 0 )
