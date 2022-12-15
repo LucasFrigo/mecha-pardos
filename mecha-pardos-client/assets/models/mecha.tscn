@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/imports/final_draft_-_mecha_coursework_xyz_school.glb" type="PackedScene" id=1]
+
+[node name="final_draft_-_mecha_coursework_xyz_school" instance=ExtResource( 1 )]
