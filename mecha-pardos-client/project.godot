@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="mecha-pardos-client"
-run/main_scene="res://lobby/lobby.tscn"
+run/main_scene="res://assets/scenes/test_ground.tscn"
 config/icon="res://icon.png"
 
 [autoload]

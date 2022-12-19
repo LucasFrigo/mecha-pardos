@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/prefabs/mecha_unit.gd" type="Script" id=1]
+[ext_resource path="res://assets/models/block_torso.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/tank_legs.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/machine_gun.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+body = ExtResource( 2 )
+legs = ExtResource( 3 )
+left_arm = ExtResource( 4 )
+right_arm = ExtResource( 4 )
+total_health = 0
