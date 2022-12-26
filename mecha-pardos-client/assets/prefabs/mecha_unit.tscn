@@ -11,6 +11,3 @@ body = ExtResource( 3 )
 legs = ExtResource( 4 )
 left_arm = ExtResource( 5 )
 right_arm = ExtResource( 5 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.5658, 1.61064, 0.130543 )

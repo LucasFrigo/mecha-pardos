@@ -27,6 +27,7 @@ points = PoolVector3Array( 7.59648, 6.70079, 3.95351, 7.59648, 6.70079, -4.62328
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
+collision_layer = 2
 
 [node name="Cube" type="MeshInstance" parent="KinematicBody"]
 transform = Transform( 0.229962, 0, 0, 0, 0.229962, 0, 0, 0, 0.229962, -0.585538, 0.674249, 0.0739736 )

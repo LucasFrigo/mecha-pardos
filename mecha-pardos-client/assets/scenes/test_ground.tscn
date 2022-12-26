@@ -1,23 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/models/player_character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/models/d_canon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/player_tps.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shaders/pixelate.gdshader" type="Shader" id=3]
-[ext_resource path="res://assets/prefabs/mecha_unit.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/models/cockpit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 3 )
 shader_param/pixelSize = 4
 
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 6000, 0.2, 6000 )
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.286275, 0.239216, 0.239216, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -3000, -0.1, -3000, -3000, 0.1, -3000, 3000, -0.1, -3000, -3000, -0.1, 3000, -3000, 0.1, 3000, 3000, 0.1, -3000, 3000, -0.1, 3000, 3000, 0.1, 3000 )
+[sub_resource type="CubeMesh" id=6]
 
 [node name="Spatial" type="Spatial"]
 
@@ -31,26 +21,32 @@ size = Vector2( 1024, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="RigidBody" type="RigidBody" parent="ViewportContainer/Viewport"]
-mode = 1
+[node name="MeshInstance" type="MeshInstance" parent="ViewportContainer/Viewport"]
+transform = Transform( 1.00224, 0, 0, 0, 2.42189, 0, 0, 0, 2.42189, 0, 3.91614, 20.0702 )
+mesh = SubResource( 6 )
 
-[node name="MeshInstance" type="MeshInstance" parent="ViewportContainer/Viewport/RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51885, 0 )
-mesh = SubResource( 1 )
-skeleton = NodePath("../../../..")
-material/0 = SubResource( 5 )
+[node name="CSGBox" type="CSGBox" parent="ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.18807, 0 )
+use_collision = true
+width = 66.9311
+height = 0.002
+depth = 152.0
 
-[node name="CollisionShape" type="CollisionShape" parent="ViewportContainer/Viewport/RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51885, 0 )
-shape = SubResource( 2 )
+[node name="CSGCylinder" type="CSGCylinder" parent="ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 0 )
+use_collision = true
+height = 8.0
 
-[node name="MainChar" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028863, 7.33092, 0 )
+[node name="CSGCylinder2" type="CSGCylinder" parent="ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, 9.41635 )
+use_collision = true
+height = 8.0
 
-[node name="mecha_unit" parent="ViewportContainer/Viewport" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18086, 10.2973, -14.1347 )
-body = ExtResource( 5 )
-left_arm = ExtResource( 2 )
-right_arm = ExtResource( 2 )
+[node name="CSGCylinder3" type="CSGCylinder" parent="ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, -4.21444 )
+use_collision = true
+height = 8.0
 
-[editable path="ViewportContainer/Viewport/mecha_unit"]
+[node name="player_tps" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84551, 0 )
+collision_layer = 3
